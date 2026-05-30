@@ -32,7 +32,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve uploads folder statically
+// Serve uploads folder statically
 app.use('/uploads', express.static('uploads'));
+
+// Test Routes
+app.get('/', (req, res) => {
+  res.send('SmartNotes AI Backend Running');
+});
+
+app.get('/health', (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: 'Backend Healthy',
+  });
+});
 
 // API Routes
 app.use('/api', masterRouter);
