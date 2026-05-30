@@ -1,4 +1,11 @@
 console.log("===== INDEX FILE LOADED =====");
+app.get('/health', (req, res) => {
+  console.log("HEALTH ROUTE HIT");
+  res.status(200).json({
+    success: true,
+    message: 'Backend Healthy',
+  });
+});
 import express from 'express';
 import cors from 'cors';
 import { env } from './config/env.js';
@@ -41,12 +48,12 @@ app.get('/', (req, res) => {
   res.send('SmartNotes AI Backend Running');
 });
 
-app.get('/health', (req, res) => {
-  res.status(200).json({
-    success: true,
-    message: 'Backend Healthy',
-  });
-});
+// app.get('/health', (req, res) => {
+//   res.status(200).json({
+//     success: true,
+//     message: 'Backend Healthy',
+//   });
+// });
 
 // API Routes
 app.use('/api', masterRouter);
